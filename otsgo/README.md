@@ -2,11 +2,10 @@
 title: otsgo
 homepage: https://github.com/emdneto/otsgo
 tagline: |
-  otsgo: A simple CLI and API client for One-Time Secret written in Go.
+  otsgo: A simple CLI and API client for One-Time Secret
 ---
 
-
-To update or switch versions, run `webi otsgo@stable` (or `@v2.0.0`, `@beta`,
+To update or switch versions, run `webi ots@stable` (or `@v2`, `@beta`,
 etc).
 
 ### Files
@@ -16,25 +15,48 @@ install:
 
 ```txt
 ~/.config/envman/PATH.env
-~/.local/bin/otsgo
-~/.local/opt/otsgo
+~/.local/bin/ots
+~/.local/opt/ots
 ```
 
 ## Cheat Sheet
 
-> `foo` doesn't exist and this text should have been replaced. It doesn't do
-> anything, but what it does is useful because it is; everybody knows it.
+### Share a generated secret
 
-To run foo:
-
-```bash
-ots -h
+```
+$ ots share -g
 ```
 
-### Add Baz Highlighting
+### Share custom secret with ttl and passphrase
 
-To run foo with both bar and baz highlighting turned on:
+```
+$ ots share -s hellosecret -t 300 -p hello
+```
 
-```bash
-foo --bar=baz
+### Share secret from file
+```
+$ cat <<EOF | ots share -f -
+secret: hello
+seret: secret
+EOF
+
+$ echo "hellosecret" | ots share -f
+```
+
+### Burn secrets
+```
+$ ots burn METADATA_KEY
+```
+
+### Get secret value
+```
+$ ots get secret SECRET_KEY
+```
+### Get secret metadata
+```
+$ ots get meta METADATA_KEY
+```
+### Get recent secrets (requires auth)
+```
+$ ots get recent
 ```

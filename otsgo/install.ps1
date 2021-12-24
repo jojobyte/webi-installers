@@ -1,11 +1,11 @@
 #!/usr/bin/env pwsh
 
 ##################
-# Install ots #
+# Install otsgo #
 ##################
 
 # Every package should define these variables
-$pkg_cmd_name = "ots"
+$pkg_cmd_name = "otsgo"
 
 $pkg_dst_cmd = "$Env:USERPROFILE\.local\bin\ots.exe"
 $pkg_dst = "$pkg_dst_cmd"
@@ -21,14 +21,14 @@ $pkg_download = "$Env:USERPROFILE\Downloads\webi\$Env:WEBI_PKG_FILE"
 # Fetch archive
 IF (!(Test-Path -Path "$Env:USERPROFILE\Downloads\webi\$Env:WEBI_PKG_FILE"))
 {
-    echo "Downloading ots from $Env:WEBI_PKG_URL to $pkg_download"
+    echo "Downloading otsgo from $Env:WEBI_PKG_URL to $pkg_download"
     & curl.exe -A "$Env:WEBI_UA" -fsSL "$Env:WEBI_PKG_URL" -o "$pkg_download.part"
     & move "$pkg_download.part" "$pkg_download"
 }
 
 IF (!(Test-Path -Path "$pkg_src_cmd"))
 {
-    echo "Installing ots"
+    echo "Installing otsgo"
 
     # TODO: create package-specific temp directory
     # Enter tmp
@@ -50,7 +50,7 @@ IF (!(Test-Path -Path "$pkg_src_cmd"))
         # Settle unpacked archive into place
         echo "Install Location: $pkg_src_cmd"
         New-Item "$pkg_src_bin" -ItemType Directory -Force | out-null
-        Move-Item -Path "ots.exe" -Destination "$pkg_src_bin"
+        Move-Item -Path ".\ots.exe" -Destination "$pkg_src_bin"
 
     # Exit tmp
     popd
