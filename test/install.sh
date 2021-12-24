@@ -145,6 +145,7 @@ function __rmrf_local() {
             nerd-font \
             nerdfont \
             node \
+            otsgo \
             pandoc \
             pathman \
             prettier \
@@ -240,6 +241,7 @@ function __test() {
         nerd-font \
         nerdfont \
         node \
+        otsgo \
         pandoc \
         pathman \
         postgres \
