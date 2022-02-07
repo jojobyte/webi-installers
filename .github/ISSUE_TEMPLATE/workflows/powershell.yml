@@ -1,0 +1,27 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+#       - name: Run a one-line script
+#         run: echo Hello, world!
+#       - name: Run a multi-line script
+#         run: |
+#           echo Add other actions to build,
+#           echo test, and deploy your project.
+#       - name: Perform a Pester test from the command-line
+#         shell: pwsh
+#         run: Test-Path resultsfile.log | Should -Be $true
+      - name: Perform a Webi Install Test
+        shell: pwsh
+        run: |
+          Invoke-Pester tests/install.ps1 -Passthru
