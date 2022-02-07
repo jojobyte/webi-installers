@@ -34,7 +34,7 @@ jobs:
           dir
       - name: Show webi help
         shell: pwsh
-        run: webi --help
+        run: $Env:USERPROFILE\.local\bin\webi --help
       # - name: Perform a Webi Install Test
       #   shell: pwsh
       #   run: |
