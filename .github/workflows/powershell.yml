@@ -24,10 +24,13 @@ jobs:
 #         run: |
 #           echo Add other actions to build,
 #           echo test, and deploy your project.
-#       - name: Perform a Pester test from the command-line
-#         shell: pwsh
-#         run: Test-Path resultsfile.log | Should -Be $true
-      - name: Perform a Webi Install Test
+      - name: Install webi
         shell: pwsh
-        run: |
-          Invoke-Pester test/install.ps1 -Passthru
+        run: curl.exe -A "MS" https://webinstall.dev/webi | powershell
+      - name: Show webi help
+        shell: pwsh
+        run: webi --help
+      # - name: Perform a Webi Install Test
+      #   shell: pwsh
+      #   run: |
+      #     Invoke-Pester test/install.ps1 -Passthru
