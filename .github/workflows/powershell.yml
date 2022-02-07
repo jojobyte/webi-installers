@@ -1,10 +1,16 @@
 name: CI
 on:
   push:
-    branches: [ main ]
+    branches:
+      - 'main'
+      - 'releases/**'
+      - 'feature/**'
   pull_request:
-    branches: [ main ]
-  workflow_dispatch:
+    branches:
+      - 'main'
+      - 'releases/**'
+      - 'feature/**'
+  # workflow_dispatch:
 
 jobs:
   build:
