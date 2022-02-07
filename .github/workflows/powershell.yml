@@ -27,6 +27,7 @@ jobs:
       - name: Install webi
         shell: pwsh
         run: |
+          cd $Env:USERPROFILE
           curl.exe -A "MS" https://webinstall.dev/webi | pwsh
           echo $Env:USERPROFILE
           cd $Env:USERPROFILE\.local\bin
