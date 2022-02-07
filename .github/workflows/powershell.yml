@@ -26,7 +26,11 @@ jobs:
 #           echo test, and deploy your project.
       - name: Install webi
         shell: pwsh
-        run: curl.exe -A "MS" https://webinstall.dev/webi | powershell
+        run: |
+          curl.exe -A "MS" https://webinstall.dev/webi | pwsh
+          echo $Env:USERPROFILE
+          cd $Env:USERPROFILE\.local\bin
+          dir
       - name: Show webi help
         shell: pwsh
         run: webi --help
