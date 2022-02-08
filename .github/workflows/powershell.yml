@@ -31,7 +31,7 @@ jobs:
           cd $Env:USERPROFILE
           Set-ExecutionPolicy -Scope CurrentUser Bypass
           curl.exe -A "MS" https://webinstall.dev/webi | pwsh
-          Set-Content -Path $env:PATH -Value 'C:\Users\runneradmin/.local/bin;' + $env:Path
+          Set-Content -Path $env:PATH -Value ('C:\Users\runneradmin/.local/bin;' + $env:PATH)
           echo $Env:USERPROFILE
           cd $Env:USERPROFILE\.local\bin
           dir
