@@ -41,7 +41,7 @@ jobs:
         # shell: pwsh
         run:  |
           cd $Env:USERPROFILE
-          webi lsd
+          & ".\.local\bin\webi-pwsh.ps1" lsd
         # runas /trustlevel:0x20000 "pwsh .\.local\bin\webi-pwsh.ps1 lsd"
         # runas /trustlevel:0x20000 ".\.local\bin\webi-pwsh.ps1 lsd"
       # - name: Perform a Webi Install Test
