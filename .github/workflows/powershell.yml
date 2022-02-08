@@ -35,9 +35,12 @@ jobs:
           echo $Env:USERPROFILE
           cd $Env:USERPROFILE\.local\bin
           dir
-      - name: Show webi help
+      # - name: Show webi help
+      #   shell: pwsh
+      #   run: pwsh $Env:USERPROFILE\.local\bin\webi-pwsh.ps1 --help
+      - name: Used webi to install LSDeluxe
         shell: pwsh
-        run: pwsh $Env:USERPROFILE\.local\bin\webi-pwsh.ps1 --help
+        run: pwsh $Env:USERPROFILE\.local\bin\webi-pwsh.ps1 lsd
       # - name: Perform a Webi Install Test
       #   shell: pwsh
       #   run: |
