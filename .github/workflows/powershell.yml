@@ -15,7 +15,8 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: windows-latest
+    # runs-on: windows-latest
+    runs-on: windows-2019
     steps:
       - uses: actions/checkout@v2
 #       - name: Run a one-line script
@@ -25,7 +26,7 @@ jobs:
 #           echo Add other actions to build,
 #           echo test, and deploy your project.
       - name: Install webi
-        shell: pwsh
+        # shell: pwsh
           # Set-ExecutionPolicy -Scope {Process | CurrentUser | LocalMachine | UserPolicy | MachinePolicy} Restricted | Bypass
         run: |
           cd $Env:USERPROFILE
@@ -37,10 +38,11 @@ jobs:
       #   shell: pwsh
       #   run: pwsh $Env:USERPROFILE\.local\bin\webi-pwsh.ps1 --help
       - name: Use webi to install LSDeluxe
-        shell: pwsh
+        # shell: pwsh
         run:  |
           cd $Env:USERPROFILE
-          runas /trustlevel:0x20000 "pwsh .\.local\bin\webi-pwsh.ps1 lsd"
+          webi lsd
+        # runas /trustlevel:0x20000 "pwsh .\.local\bin\webi-pwsh.ps1 lsd"
         # runas /trustlevel:0x20000 ".\.local\bin\webi-pwsh.ps1 lsd"
       # - name: Perform a Webi Install Test
       #   shell: pwsh
