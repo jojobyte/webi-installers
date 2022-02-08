@@ -29,10 +29,8 @@ jobs:
           # Set-ExecutionPolicy -Scope {Process | CurrentUser | LocalMachine | UserPolicy | MachinePolicy} Restricted | Bypass
         run: |
           cd $Env:USERPROFILE
-          Set-ExecutionPolicy -Scope CurrentUser Bypass
           curl.exe -A "MS" https://webinstall.dev/webi | pwsh
           Set-Content -Path env:PATH -Value ('C:\Users\runneradmin/.local/bin;' + $env:PATH)
-          echo $Env:USERPROFILE
           cd $Env:USERPROFILE\.local\bin
           dir
       # - name: Show webi help
@@ -42,8 +40,8 @@ jobs:
         shell: pwsh
         run:  |
           cd $Env:USERPROFILE
-          Set-ExecutionPolicy -Scope CurrentUser Restricted
-          pwsh .\.local\bin\webi-pwsh.ps1 lsd
+          runas /trustlevel:0x20000 "webi lsd"
+        # runas /trustlevel:0x20000 ".\.local\bin\webi-pwsh.ps1 lsd"
       # - name: Perform a Webi Install Test
       #   shell: pwsh
       #   run: |
