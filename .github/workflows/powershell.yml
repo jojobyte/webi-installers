@@ -38,9 +38,12 @@ jobs:
       # - name: Show webi help
       #   shell: pwsh
       #   run: pwsh $Env:USERPROFILE\.local\bin\webi-pwsh.ps1 --help
-      - name: Used webi to install LSDeluxe
+      - name: Use webi to install LSDeluxe
         shell: pwsh
-        run: pwsh $Env:USERPROFILE\.local\bin\webi-pwsh.ps1 lsd
+        run:  |
+          cd $Env:USERPROFILE
+          Set-ExecutionPolicy -Scope CurrentUser Restricted
+          pwsh .\.local\bin\webi-pwsh.ps1 lsd
       # - name: Perform a Webi Install Test
       #   shell: pwsh
       #   run: |
